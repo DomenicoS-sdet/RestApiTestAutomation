@@ -12,5 +12,5 @@ Maven allows to install the required packages really easy. Also, it makes the fr
 ## Preparation 
 Maven and Java needs to be installed and configured. Please follow [this tutorial](https://www.mkyong.com/maven/how-to-install-maven-in-windows/) to install Maven and configure it. 
 
-##Run the tests from the command line
+## Run the tests from the command line
 Once Maven and Java are configured, navigate to the project folder using the command line. Once inside the folder execute **mvn test**, this will install the missing packages and start the test execution. At the end of the execution it will return the tests results and also the location where the report -as txt file- is stored
