@@ -1,4 +1,4 @@
-package AutomationFramework.com.apitesting;
+package RestAssured;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
