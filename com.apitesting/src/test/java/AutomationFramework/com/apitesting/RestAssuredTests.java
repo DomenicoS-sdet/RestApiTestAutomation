@@ -6,7 +6,6 @@ import static io.restassured.RestAssured.given;
 import org.junit.Before;
 import org.junit.Test;
 import static io.restassured.RestAssured.get;
-import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 
@@ -43,23 +42,26 @@ public class RestAssuredTests {
 		get("/posts?userId=1").then().assertThat().body("userId", everyItem(equalTo(1))).and().statusCode(200);
 	}
 	
-	private static String payload = 
-			"{\n" +
-			   " \"userId\": 1,\n" +
-			   " \"id\": 101,\n" +
-			   " \"title\": \"AutomationTestingTests\",\n" +
-			   " \"body\": \"This is a post created in automation\" \n" +
-			"}";
 	
 	//This test checks if a new post can be added and then it tries to retrieve it
 	@Test
 	public void verifyanewpostcanbecreatedanditsavailable() {
+		String payload = 
+				"{\n" +
+				   " \"userId\": 1,\n" +
+				   " \"id\": 101,\n" +
+				   " \"title\": \"AutomationTestingTests\",\n" +
+				   " \"body\": \"This is a post created in automation\" \n" +
+				"}"; 
+		
 		given().contentType(ContentType.JSON)
+			.and()
 			.body(payload)
+			.when()
 			.post("/posts")
 			.then().statusCode(201);
 		
-		get("/posts/101").then().assertThat().body("id", equalTo(101)).and().statusCode(200);
+		//get("/posts/101").then().assertThat().body("id", equalTo(101)).and().statusCode(200);
 	}
 
 }
