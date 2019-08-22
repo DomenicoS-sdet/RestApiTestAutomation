@@ -61,7 +61,7 @@ public class RestAssuredTests {
 			.post("/posts")
 			.then().statusCode(201);
 		
-		//get("/posts/101").then().assertThat().body("id", equalTo(101)).and().statusCode(200);
+		get("/posts/101").then().assertThat().body("id", equalTo(101)).and().statusCode(200);
 	}
 
 }
