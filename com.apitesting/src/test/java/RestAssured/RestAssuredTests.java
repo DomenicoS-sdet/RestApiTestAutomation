@@ -6,6 +6,7 @@ import static io.restassured.RestAssured.given;
 import org.junit.Before;
 import org.junit.Test;
 import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.delete;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 
@@ -62,6 +63,64 @@ public class RestAssuredTests {
 			.then().statusCode(201);
 		
 		get("/posts/101").then().assertThat().body("id", equalTo(101)).and().statusCode(200);
+	}
+	
+	//This test checks if a specific post can be updated using PUT and the post id
+	@Test
+	public void verifyapostcanbeupdated_PUT() {
+		String payload = 
+				"{\n" +
+				   " \"userId\": 1,\n" +
+				   " \"id\": 1,\n" +
+				   " \"title\": \"AutomationTestingTests\",\n" +
+				   " \"body\": \"This is a post created in automation\" \n" +
+				"}"; 
+		given().contentType(ContentType.JSON)
+			.and()
+			.body(payload)
+			.when()
+			.put("/posts/1")
+			.then().statusCode(200);
+		
+		get("/posts/1")
+		.then()
+		.assertThat()
+		.body("title", equalTo("AutomationTestingTests"))
+		.and()
+		.body("body", equalTo("This is a post created in automation"))
+		.and()
+		.statusCode(200);
+	}
+	
+	//This test checks if a specific post can be updated using PATCH and the post id
+	@Test
+	public void verifyapostcanbeupdated_PATCH() {
+		String payload = 
+				"{\n" +
+				   " \"title\": \"AutomationTestingTests\",\n" +
+				"}"; 
+		given().contentType(ContentType.JSON)
+		.and()
+		.body(payload)
+		.when()
+		.patch("/posts/1")
+		.then().statusCode(200);
+		
+		get("/posts/1")
+		.then()
+		.assertThat()
+		.body("title", equalTo("AutomationTestingTests"))
+		.and()
+		.statusCode(200);
+	}
+	
+	//This test checks if a specific post can be deleted 
+	@Test
+	public void verifyapostcanbedeleted() {
+		delete("/posts/1").then().statusCode(200);
+		
+		get("/posts/1").then().statusCode(404);
+		
 	}
 
 }
