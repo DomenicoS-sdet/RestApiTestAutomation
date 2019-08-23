@@ -93,6 +93,7 @@ public class RestAssuredTests {
 	}
 	
 	//This test checks if a specific post can be updated using PATCH and the post id
+	//possible bug below as the PATCH returns 500 error
 	@Test
 	public void verifyapostcanbeupdated_PATCH() {
 		String payload = 
