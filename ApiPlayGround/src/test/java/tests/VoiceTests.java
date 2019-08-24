@@ -15,11 +15,6 @@ import java.util.ArrayList;
 
 public class VoiceTests extends Tests{
 	
-	@Before @Override
-	public void setup() {
-		RestAssured.baseURI = "https://api.nexmo.com";
-	}
-	
 	@Test
 	public void testvoicecall() {
 		VoicePayLoad payload = new VoicePayLoad();

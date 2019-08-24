@@ -15,6 +15,7 @@ public abstract class Tests {
 	
 	protected static String API_KEY = "7722cc06";
 	protected static String API_SECRET = "1DoZ3PzedVj2asOG";
+	protected static String PHONE_NUMBER = "447450816950";
 	protected static String APP_JWT = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NjY"
 			+ "2MzgzOTUsImp0aSI6IjU2MGUxZTgwLWM2NTAtMTFlOS1iNTU0LTg3ZDZlZmQ0ZmU3NyIsImFwcGx"
 			+ "pY2F0aW9uX2lkIjoiNTc3ODU3YzItNDkzMi00NzI1LTgzYjctNDc2NjgzNjRhZTJhIn0.P0twBER"
@@ -26,7 +27,7 @@ public abstract class Tests {
 	
 	@Before
 	public void setup() {
-		RestAssured.baseURI = "https://rest.nexmo.com";
+		RestAssured.baseURI = "https://api.nexmo.com";
 	}
 
 }
