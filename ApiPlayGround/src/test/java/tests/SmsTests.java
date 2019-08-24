@@ -11,15 +11,8 @@ import static org.hamcrest.Matchers.everyItem;
 import com.google.gson.Gson;
 import utils.SmsPayload;
 
-public class SmsTests {
+public class SmsTests extends Tests{
 	
-	private static String API_KEY = "7722cc06";
-	private static String API_SECRET = "1DoZ3PzedVj2asOG";
-	
-	@Before
-	public void setup() {
-		RestAssured.baseURI = "https://rest.nexmo.com";
-	}
 	
 	@Test
 	public void sendSmsToNumber() {

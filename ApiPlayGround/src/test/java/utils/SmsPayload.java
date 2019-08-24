@@ -1,10 +1,9 @@
 package utils;
 
+import utils.PayLoad;
 
-
-public class SmsPayload {
-	public String api_key;
-	public String api_secret;
+public class SmsPayload extends PayLoad{
+	
 	public String to;
 	public String from;
 	public String text;
